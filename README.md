@@ -1,4 +1,4 @@
-#Opdracht
+# Opdracht
 
 De opdracht is de volgende:
 Bouw een nieuws applicatie waarmee het laatste nieuws wordt gepresenteerd,
@@ -13,7 +13,7 @@ De oplossing dient werkend te worden aangeleverd (hosted), tevens een ZIP-archie
 de volledige code en een beperkte separate beschrijving van de componenten en
 gemaakte keuzes
 
-#Toespitsing backend
+# Toespitsing backend
 Van backend-developers wordt verwacht dat ze minimaal het volgende in de oplossing
 betrekken:
 * Object-oriented PHP5 of PHP7
@@ -27,7 +27,7 @@ Wil de developer meer toevoegen aan de oplossing, denk dan aan het volgende:
 * Filteren op categorieen binnen een kanaal
 * Zie ook de uitdagingen bij Front-End
 
-#Toespitsing frontend
+# Toespitsing frontend
 Van frontend-developers wordt verwacht dat ze minimaal het volgende in de oplossing
 betrekken:
 * Valide HTML5 markup
@@ -43,16 +43,16 @@ Wil de developer meer toevoegen aan de oplossing, denk dan aan het volgende:
 * Filteren op categorieen binnen een kanaal
 * Zie ook de uitdagingen bij backend
 
-#Beoordelingscriteria
+# Beoordelingscriteria
 De volgende aandachtspunten worden gebruikt om de aangeleverde code te beoordelen
 (voor zover relevant en toepasbaar). Mocht je een begrip niet kennen of weten toe te
 passen, op Wikipedia zijn zeer uitgebreide artikelen over software development en code
 reviewing te vinden waarin onderstaande zeker terug te vinden is.
 
 
-##Aspecten
+## Aspecten
 
-###Maintainability,Adaptability
+### Maintainability,Adaptability
 - Duplicated Code
 - Use of Short Methods
 - Variable Scoping
@@ -75,7 +75,7 @@ reviewing te vinden waarin onderstaande zeker terug te vinden is.
 - Proper use of OOP
 - Proper use of MVC
 
-###Robustness 
+### Robustness 
 - Defensive Programming
 - Proper use of Exception Handling
 - Exceptions are logged to facilitate debugging
@@ -84,7 +84,7 @@ reviewing te vinden waarin onderstaande zeker terug te vinden is.
 - Security aspects
 - Use of cookies and sessions
 
-###Performance 
+### Performance 
 - Style of Communication
 - Loop considerations
 - String Handling
@@ -92,7 +92,7 @@ reviewing te vinden waarin onderstaande zeker terug te vinden is.
 - Appropriate Use of Caching
 - Consider opportunities for Asynchronous or Queued Operations
 
-###Documentation 
+### Documentation 
 - Class documentation
 - Method documentation
 - Inline documentation
