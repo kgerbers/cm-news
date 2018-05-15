@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}
+    - <a href="{{ feed.link }}">{{ feed.title }}</a><br><small>{{ feed.description }}</small>
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+    There are {{ items|length }} articles waiting for you! Happy Reading :)
+{% endblock %}
+
+{% block body %}
+    <div class="row equal">
+    {% for item in items %}
+        <div class=" col-xs-12 col-sm-6 news-item">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
+                </div>
+                <div class="panel-body">
+                    <p>{{ item.description|raw }}</p>
+                </div>
+                <div class="panel-footer text-right small">
+                    Posted on {{ item.pubDate|date('d-m-Y H:i') }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+

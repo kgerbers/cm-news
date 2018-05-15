@@ -1,0 +1,16 @@
+.alert {
+    position: absolute;
+    right: 10px;
+    width: fit-content;
+}
+
+.news-item .panel .panel-body {
+    min-height: 150px;
+}
+
+.equal {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: flex-end;
+    align-content: flex-end;
+}

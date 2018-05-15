@@ -96,3 +96,11 @@ reviewing te vinden waarin onderstaande zeker terug te vinden is.
 - Class documentation
 - Method documentation
 - Inline documentation
+
+
+### Notes
+RSS feeds:
+``` 
+  * https://www.nu.nl/rss/tech
+  * http://feeds.feedburner.com/tweakers/mixed
+```
