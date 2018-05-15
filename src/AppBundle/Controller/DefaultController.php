@@ -38,4 +38,16 @@ class DefaultController extends Controller
             'items' => $items,
         ]);
     }
+
+    /**
+     * @Route("/settings", name="settings")
+     */
+    public function settingsAction(Request $request)
+    {
+        $feed_list = $this->getDoctrine()->getRepository('AppBundle:Feed')->findAll();
+
+        return $this->render('default/index.html.twig', [
+            'feed_list' => $feed_list,
+        ]);
+    }
 }
