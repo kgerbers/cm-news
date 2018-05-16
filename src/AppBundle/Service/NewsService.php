@@ -82,7 +82,7 @@ class NewsService
 
         $rss = $rss->channel;
         $rss->addChild('feed_url', $url);
-        $this->saveFeed($rss);
+        $this->saveFeed(null, $rss);
         return true;
     }
 
@@ -112,13 +112,13 @@ class NewsService
      * This could be expanded to delete only old items and add only new items
      * This method also type cast the input to the right types
      */
-    private function saveFeed(Feed $feed, $rss)
+    private function saveFeed(Feed $feed = null, $rss)
     {
-        // remove all old news items before setting new ones:
-        $feed->removeAllItems();
-        $this->em->persist($feed);
-
-        if (!$feed) {
+        if ($feed) {
+            // remove all old news items before setting new ones:
+            $feed->removeAllItems();
+            $this->em->persist($feed);
+        } else {
             $feed = new Feed();
         }
 
