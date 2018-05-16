@@ -1,0 +1,2 @@
+INSERT INTO `users` (`id`, `email`, `fullname`, `password`, `properties`) VALUES
+  (1, 'demo@example.com', 'Demo User', '$2y$13$khmLV3kXW3raSNzBJwgF8uck5ob55dKOVpp14ZtAxk2jCJ8pJknBu', '{\"main_background_color\":\"#41484D\"}');
