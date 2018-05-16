@@ -90,10 +90,21 @@ class Feed
 
     /**
      * One feed has Many items.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Item", mappedBy="feed", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Item",
+     *     mappedBy="feed",
+     *     orphanRemoval=true,
+     *     cascade={"persist", "remove"},
+     *     fetch="EXTRA_LAZY"
+     * )
      */
     private $items;
 
+    public function __construct()
+    {
+        // Items are a ArrayCollection so we can perform add and clear actions:
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -290,7 +301,8 @@ class Feed
     }
 
     /**
-     * @return mixed
+     * Get last updated
+     * @return \DateTime
      */
     public function getLastUpdated()
     {
@@ -298,7 +310,7 @@ class Feed
     }
 
     /**
-     * @param mixed $lastUpdated
+     * @param \DateTime $lastUpdated
      * @return Feed
      */
     public function setLastUpdated($lastUpdated = null)
@@ -307,13 +319,41 @@ class Feed
         return $this;
     }
 
+    /**
+     * Remove all items for Feed
+     *
+     * @return Feed
+     */
+    public function removeAllItems()
+    {
+        $this->items->clear();
+        return $this;
+    }
 
+    /**
+     * Add one item to Feed
+     *
+     * @return Feed
+     */
+    public function addItem($child)
+    {
+        $this->items->add($child);
+        return $this;
+    }
 
+    /**
+     * Get all items
+     * @return ArrayCollection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 
     /**
      * Set items
      *
-     * @param string $items
+     * @param array $items
      *
      * @return Feed
      */
@@ -322,15 +362,5 @@ class Feed
         $this->items = $items;
 
         return $this;
-    }
-
-    /**
-     * Get items
-     *
-     * @return string
-     */
-    public function getItems()
-    {
-        return $this->items;
     }
 }

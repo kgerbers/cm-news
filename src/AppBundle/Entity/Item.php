@@ -67,11 +67,16 @@ class Item
     /**
      * @var array
      *
-     * @ORM\Column(name="enclosures", type="json_array", nullable=true)
+     * @ORM\Column(name="enclosures", type="text", nullable=true)
      */
     private $enclosures;
 
-
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="categories", type="text", nullable=true)
+     */
+    private $categories;
 
 
     /**
@@ -92,16 +97,6 @@ class Item
         return $this;
     }
 
-
-
-
-
-
-
-
-
-
-
     /**
      * Get id
      *
@@ -111,7 +106,6 @@ class Item
     {
         return $this->id;
     }
-
 
     /**
      * Set title
@@ -260,13 +254,11 @@ class Item
     /**
      * Set category
      *
-     * @param array $category
-     *
      * @return Item
      */
-    public function setCategory($category)
+    public function setCategories($categories)
     {
-        $this->category = $category;
+        $this->categories = json_encode($categories);
 
         return $this;
     }
@@ -276,9 +268,8 @@ class Item
      *
      * @return array
      */
-    public function getCategory()
+    public function getCategories()
     {
-        return $this->category;
+        return json_decode($this->categories);
     }
 }
-

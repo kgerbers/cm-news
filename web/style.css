@@ -1,6 +1,13 @@
-.alert {
+.notifications {
     position: absolute;
-    right: 10px;
+    left: 50%;
+    width: fit-content;
+    z-index: 999;
+    transform: translate(-50%, 0);
+}
+.alert {
+    position: relative;
+    margin: auto;
     width: fit-content;
 }
 

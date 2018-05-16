@@ -7,9 +7,12 @@
         <div class="row equal">
         {%  for feed in feed_list %}
            <div class="col-md-3">
-               <div class="panel panel-default text-center" style="min-height: 100px;">
-                   <span class="lead">{{ feed.title }}</span> <br>
-                   {{ feed.description }}
+               <div class="panel panel-default text-center" style="min-height: 150px;">
+                   <div class="panel-body">
+                       <span class="lead">{{ feed.title }}</span> <br>
+                       <p>{{ feed.description }}</p>
+                       <p><a href="{{ path('news', {'slug': feed.slug}) }}">Go to feed</a></p>
+                   </div>
                </div>
            </div>
         {% endfor %}

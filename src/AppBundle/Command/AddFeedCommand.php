@@ -28,12 +28,12 @@ final class AddFeedCommand extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->write("Adding '".$input->getArgument('url')."': ");
-        $newsService = $this->get('AppBundle\Service\NewsFetcher');
+        $news_service = $this->get('AppBundle\Service\NewsService');
 
-        if ($newsService->addFeed($input->getArgument('url'))) {
+        if ($news_service->addFeed($input->getArgument('url'))) {
             $output->write('OK');
         } else {
-            $output->write('ERROR');
+            $output->write('ERROR, Feed could not be added, see log for details');
         }
     }
 }

@@ -6,27 +6,61 @@
 
 {% block header %}
     {{ parent() }}
-    There are {{ items|length }} articles waiting for you! Happy Reading :)
+    <p>There are {{ feed.items|length }} articles waiting for you! Happy Reading :)</p>
+    {% if category  %}
+        <p>Used filter: '{{ category }}' - <a href="{{ path('news', {'slug':feed.slug}) }}" class="btn btn-sm btn-default">clear filters</a></p>
+    {% endif %}
 {% endblock %}
 
 {% block body %}
     <div class="row equal">
-    {% for item in items %}
+        {% if feed.items %}
+        {% for item in feed.items %}
         <div class=" col-xs-12 col-sm-6 news-item">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
                 </div>
                 <div class="panel-body">
-                    <p>{{ item.description|raw }}</p>
+                {% if item.enclosures %}
+                    <img src="{{ item.enclosures.url }}" class=" img-thumbnail" style="float: left; width: 100px; margin-right: 10px">
+                {% endif %}
+                    <p>{{ item.description|striptags('<a> <strong> <i> <br> <p>')|raw }}</p>
                 </div>
-                <div class="panel-footer text-right small">
-                    Posted on {{ item.pubDate|date('d-m-Y H:i') }}
+
+                <div class="panel-footer text-left small">
+                    {% if item.categories %}
+                    <div style="float: left">
+                        <strong>Categories:</strong>
+                        {% for category in item.categories %}
+                            - <a href="{{ path('news', {'slug':feed.slug, 'category': category|lower|e('url')}) }}" title="Filter on this category">{{ category }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="text-right">
+                        <strong>Posted on</strong> {{ item.pubDate|date('d-m-Y H:i') }}
+                    </div>
+
                 </div>
             </div>
         </div>
     {% endfor %}
+            {% else %}
+                <div class=" col-xs-12 col-sm-offset-3 col-sm-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h5><i class="glyphicon glyphicon-info-sign"></i> No results</h5>
+                        </div>
+                        <div class="panel-body">
+                            <h3>There are no results found.</h3>
+                            <p>Try to remove any filter:<br>
+                                <a href="{{ path('news', {'slug':feed.slug}) }}" class="btn btn-sm btn-default">clear filters</a></p>
+                        </div>
+                    </div>
+                </div>
+        {% endif %}
     </div>
+
 
 {% endblock %}
 
